@@ -39,4 +39,5 @@ mov eax, [0x0699]  取出
 section .data     放文件数据区,分配内存	
 sui_bian_xie   dw    0  开辟4字节空间,用0填充  double word
 
+#add ebx, eax # 默认返回eax, 这样写的结果就是10,汇编真的很容易错
 

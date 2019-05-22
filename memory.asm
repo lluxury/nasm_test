@@ -1,14 +1,13 @@
 global main
 
 main:
-    mov ebx, 1
-    mov ecx, 2
-    add ebx, ecx
+    mov eax, [number_1]
+    mov ebx, [number_2]
+    add eax, ebx
 
-    mov [tmp], ebx
-    mov eax, [tmp]
    
     ret
 
 section .data
-tmp dw 0
+number_1 dw 10
+number_2 dw 20
