@@ -211,3 +211,54 @@ int main() {
 # 前一次运算的结果是正还是负、计算过程有没有发生进位、计算结果是不是零等信息
 # 跳转指令，就是根据eflags寄存器中的状态，来决定是否要进行跳转的
 
+
+
+
+
+
+# 拆散循环结构
+# c 函数
+
+int sum = 0;
+int i = 1;
+while( i <= 10 ) {
+    sum = sum + i;
+    i = i + 1;
+}
+
+# 如果不满足 i <= 10，则跳过代码块
+# 先写成不使用循环的代码
+
+int sum = 10;
+int i = 1;
+
+_start:
+if( i <= 10 ) {
+    sum = sum + i;
+    i = i + 1;
+    goto _start;
+}
+
+
+
+# 变化一下
+
+int sum = 10;
+int i = 1;
+
+_start:
+if (i > 10){
+  goto _end_of_block;
+}
+
+sum = sum + i;
+i = i + 1;
+
+goto _start;
+
+_end_of_block:
+
+
+# 单条goto语句可以直接用jmp语句替代
+# if和goto组合的语句块可以用cmp和j*指令的组合替代
+
