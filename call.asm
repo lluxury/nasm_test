@@ -10,11 +10,7 @@ ebx_plus_1s:
 
 main:
     mov eax, 0
-    mov ebx, 0
     call eax_plus_1s
-    call eax_plus_1s
-    call ebx_plus_1s
-    add eax, ebx
     ret
 
 

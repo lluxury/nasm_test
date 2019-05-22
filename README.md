@@ -293,7 +293,29 @@ sub esp, 4
 mov dword ptr[esp], eip
 # esp先移动，然后再把eip的值写入到esp指向的内存中
 
+# 实践
+gdb ./call
+disas main
 
+b *0x080483fd
+run
 
+disas main
+
+info register eip
+info registers esp
+p/x *(unsigned int*)$esp
+
+$1 = 0xf7e3aad3
+stepi
+
+disas
+info register esp
+p/x *(unsigned int*)$esp
+
+$2 = 0x8048402
+disas main
+
+# s2的值指向<+10>所在的那一行
 
 
