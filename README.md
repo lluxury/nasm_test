@@ -319,3 +319,73 @@ disas main
 # s2的值指向<+10>所在的那一行
 
 
+
+# 递归调用
+int fibo(int n){
+  if (n ==1 || n ==2){
+    return 1;
+  }
+  return fibo(n-1) + fibo(n -2);
+}
+
+
+# 改写
+int fibo(int n){
+  if (n == 1){
+    return 1;
+}
+  if (n == 2) {
+    return 1;
+}
+  int x = n -1;
+  int y = n -2;
+  int a = fibo(x);
+  int b = fibo(y);
+  int c = a + b;
+  return c;
+}
+
+# 写成汇编试试
+# 约定eax寄存器作为函数的第一个参数，通过eax也用来传递返回值 
+
+# 失败原因 CPU中的寄存器是全局可见,没有局部变量
+# 无法实现递归或者嵌套的结构
+
+# 每一层函数中都将当前比较关键的寄存器保存到堆栈中，然后才去调用下一层函数
+# 下层的函数返回的时候，再将寄存器从堆栈中恢复出来
+
+
+# 入栈与出栈
+push eax            ; 将eax的值保存到堆栈中去
+pop ebx             ; 将堆栈顶的值取出并存放到ebx中
+
+# 尝试
+
+sum_one_to_n:
+    
+    push ebx ;压
+
+    mov ebx, 0
+
+_go_on:
+    cmp eax, 0
+    je _get_out:
+    add ebx, eax
+    sub eax, 1
+    jmp _go_on
+
+_get_out:
+    mov eax, ebx
+    pop ebx ;出
+    ret
+
+# 压栈,出栈的时机,注意体会
+
+
+
+# 寄存器有ebx、ecx、edx三个
+
+# 比较后压栈,相加完弹出
+A
+A
+
