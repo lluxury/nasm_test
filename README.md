@@ -41,3 +41,38 @@ sui_bian_xie   dw    0  开辟4字节空间,用0填充  double word
 
 #add ebx, eax # 默认返回eax, 这样写的结果就是10,汇编真的很容易错
 
+sudo apt-get install gdb -y
+
+nasm -f elf test.asm -o test.o ; gcc -m32 test.o -o test
+./test ; echo $?
+
+
+gdb ./test
+set disassembly-flavor intel
+disas main
+
+# 把反汇编的格式调整称为intel的格式
+
+Dump of assembler code for function main:
+   0x080483f0 <+0>:	mov    eax,0x1
+   0x080483f5 <+5>:	mov    ebx,0x2
+   0x080483fa <+10>:	add    eax,ebx
+   0x080483fc <+12>:	ret    
+   0x080483fd <+13>:	xchg   ax,ax
+   0x080483ff <+15>:	nop
+End of assembler dump.
+
+# 前面内容为指令的地址
+
+  break *0x080483f5
+  run
+  info register eax
+  info register ebx
+  stepi
+  info register ebx
+  stepi
+  disas
+  continue
+
+
+
