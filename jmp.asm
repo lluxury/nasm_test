@@ -1,11 +1,10 @@
 global main
 
 main:
-    mov eax,1
-    mov ebx,2
-    jmp other
-
-    add eax,ebx
+    mov eax, 50
+    cmp eax, 10
+    jle less_func
+    sub eax, 10
     
-other:
+less_func:
     ret

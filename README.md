@@ -148,3 +148,27 @@ ret
 # jmp 相当于goto 跳转
 
 
+
+# if 程序
+# c 代码
+int main() {
+    int a = 50;
+    if( a > 10 ) {
+        a = a - 10;
+    }
+    return a;
+}
+
+
+    cmp eax, 10              ; 对eax和10进行比较
+    jle less_func            ; 小于或等于的时候跳转
+    sub eax, 10
+
+# 和10，a大于10的时候，进入if块中执行减法
+# 比较eax和10，eax小于等于10的时候，跳过中间的减法
+# 这个比较坑,思路上要注意下
+
+
+
+
+
