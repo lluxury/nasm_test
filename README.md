@@ -17,5 +17,4 @@ first  first.asm  first.o
 
 ./first ; echo $?
 
-
-
+#由于错误的结果,得到错误的结论很容易
