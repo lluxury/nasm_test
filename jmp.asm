@@ -1,12 +1,17 @@
 global main
 
 main:
-    ;mov eax, 1
-    mov eax, 110
+    mov eax, 10
+
     cmp eax, 100
-    jle more_func
+    jle l_O_e_100
     sub eax, 20
     
-more_func:
-    add eax, 1 
+l_O_e_100:
+    cmp eax, 10
+    jg g_10
+    add eax, 10 
+
+g_10:
+    add eax, 1
     ret
