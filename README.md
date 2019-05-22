@@ -76,3 +76,42 @@ End of assembler dump.
 
 
 
+# C语言与汇编语言的关系
+# 例程
+
+int x, y, z;
+
+int main() {
+    x = 2;
+    y = 3;
+    z = x + y;
+    return z;
+}
+
+gcc -m32 test01.c -o test01
+./test01 ; echo $?
+
+nasm -f elf test02.asm -o test02.o 
+gcc -m32 test02.o -o test02
+./test02 ; echo $?
+
+
+
+gcc -m32 test01.c -o test01
+nasm -f elf test02.asm -o test02.o
+gcc -m32 -fno-lto test02.o -o test02
+ls
+
+
+
+gdb ./test01
+set disassembly-flavor intel
+disas main
+
+
+gdb ./test02
+set disassembly-flavor intel
+disas main
+
+
+# 对比
