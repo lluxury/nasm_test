@@ -115,3 +115,25 @@ disas main
 
 
 # 对比
+
+x = 2;
+y = 3;  的语句
+
+mov eax, 2
+mov [x], eax
+mov eax, 3
+mov [y], eax
+
+z = x + y; 的语句
+
+mov eax, [x]
+mov ebx, [y]
+add eax, ebx
+mov [z], eax
+
+return z;  的语句
+mov eax, [z]
+ret
+
+
+# 虽然很啰嗦,但是说明了执行的流程,要多熟悉

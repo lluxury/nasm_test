@@ -1,10 +1,10 @@
 global main
 
 main:
-    mov eax, 2
-    mov [x], eax
-    mov eax, 3
-    mov [y], eax
+   ; mov [x], 0x2
+   ; mov [y], 0x3
+    mov dword [x], 0x2
+    mov dword [y], 0x3
 
     mov eax, [x]
     mov ebx, [y]
