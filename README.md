@@ -34,5 +34,9 @@ mov [0x5566],eax  寄存器内容保存到内存地址中,
 		  想一下赋值,另int需要4个字节,4个内存地址
 
 mov eax, [0x0699]  取出
+#以上语句,保护模式无效,用tmp替代
+
+section .data     放文件数据区,分配内存	
+sui_bian_xie   dw    0  开辟4字节空间,用0填充  double word
 
 
