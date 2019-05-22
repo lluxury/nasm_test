@@ -60,3 +60,4 @@ test02
 jmp
 grade
 loop
+call
